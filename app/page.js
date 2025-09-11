@@ -134,7 +134,7 @@ export default function VotePage() {
       {/* Share Section */}
       <div className="mt-6 text-center">
         <p className="text-gray-300 italic">
-          "Share your vote with friends and spread the power! 🔗🎉"
+          {"Share your vote with friends and spread the power! 🔗🎉"}
         </p>
       </div>
 
