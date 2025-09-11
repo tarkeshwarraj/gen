@@ -50,8 +50,8 @@ export default function VotePage() {
   }, []);
 
   const quotes = [
-    "Your vote is your voice — make it heard!🎉",
-    "🔗 Share Zen G",
+    "Empower your voice, choose wisely ✨",
+    "Save your country — vote now! 🗳️"
   ];
 
   return (
@@ -155,11 +155,11 @@ export default function VotePage() {
 
       {/* Footer */}
       <footer className="mt-8 text-center py-6 bg-gray-900 rounded-lg space-y-2">
-        {quotes.map((quote, index) => (
-          <p key={index} className="text-gray-400 italic">
-            {quote}
+        
+          <p className="text-gray-400 italic">
+            🚫👥 Duplicate votes blocked – IP authentication active.
           </p>
-        ))}
+      
         <p className="text-sm text-gray-500">Powered by Zen G ⚡</p>
       </footer>
     </div>
