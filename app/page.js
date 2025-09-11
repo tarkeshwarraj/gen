@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function VotePage() {
   const [candidates, setCandidates] = useState([]);
@@ -109,6 +109,8 @@ export default function VotePage() {
               <Image
                 src={person.img}
                 alt={person.name}
+                width={550}
+                height={550}
                 className="w-32 h-32 object-cover rounded-full border mb-4"
               />
               <h2 className="text-lg font-semibold text-white mb-2">
