@@ -72,7 +72,7 @@ export default function VotePage() {
         </h2>
         {quotes.map((quote, index) => (
           <p key={index} className="text-lg italic text-gray-300">
-            "{quote}"
+            {quote}
           </p>
         ))}
       </div>
