@@ -58,10 +58,22 @@ export default function VotePage() {
   return (
     <div className="p-6 min-h-screen bg-black text-white flex flex-col justify-between">
       {/* Top Right Total Votes */}
-      <div className="flex justify-end mb-4">
+      <div className="flex justify-between  mb-4">
+        <div>
+          <Image
+            src="/images/flag.jpg"
+            alt="Logo"
+            width={50}
+            height={50}
+            className="w-12 h-12 object-contain"
+          />
+        </div>
+        <div>
+
         <p className="text-lg font-bold text-gray-200">
           Total Votes: {totalVotes} 🗳️
         </p>
+        </div>
       </div>
 
       {/* Top Banner */}
