@@ -50,15 +50,14 @@ export default function VotePage() {
   }, []);
 
   const quotes = [
-    "Empower your voice, choose wisely ✨",
-    "Your vote is your voice — make it heard!” 🎉",
-    "Share to your next Zen G friend 🔗",
+    "Your vote is your voice — make it heard!🎉",
+    "🔗 Share Zen G",
   ];
 
   return (
     <div className="p-6 min-h-screen bg-black text-white flex flex-col justify-between">
       {/* Top Right Total Votes */}
-      <div className="flex justify-between  mb-4">
+      <div className="flex justify-between mb-6">
         <div>
           <Image
             src="/images/flag.jpg"
@@ -93,7 +92,7 @@ export default function VotePage() {
 
       {/* Top Bar */}
       <div className="flex justify-between items-center mb-6 px-4">
-        <p className="text-lg font-semibold text-blue-400">
+        <p className="text-md align-middle font-semibold text-blue-400">
           {yourVote ? `Your vote is now for: ${yourVote} ⭐` : "Make your choice!"}
         </p>
       </div>
