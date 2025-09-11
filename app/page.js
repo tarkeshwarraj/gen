@@ -12,13 +12,13 @@ export default function VotePage() {
   const [totalVotes, setTotalVotes] = useState(0);
 
   async function fetchCandidates() {
-    const res = await fetch( API_URL + "/api/candidates");
+    const res = await fetch( "/api/candidates");
     const data = await res.json();
     setCandidates(data.candidates || []);
   }
 
   async function fetchResults() {
-    const res = await fetch(API_URL +"/api/results");
+    const res = await fetch("/api/results");
     const data = await res.json();
     const formatted = data.results || {};
     setResults(formatted);
@@ -28,7 +28,7 @@ export default function VotePage() {
   }
 
   async function handleVote(choice) {
-    const res = await fetch(API_URL + "/api/vote", {
+    const res = await fetch("/api/vote", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ choice }),
