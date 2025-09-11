@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
+
 export default function VotePage() {
   const [candidates, setCandidates] = useState([]);
   const [results, setResults] = useState({});
@@ -10,13 +12,13 @@ export default function VotePage() {
   const [totalVotes, setTotalVotes] = useState(0);
 
   async function fetchCandidates() {
-    const res = await fetch("/api/candidates");
+    const res = await fetch( API_URL + "/api/candidates");
     const data = await res.json();
     setCandidates(data.candidates || []);
   }
 
   async function fetchResults() {
-    const res = await fetch("/api/results");
+    const res = await fetch(API_URL +"/api/results");
     const data = await res.json();
     const formatted = data.results || {};
     setResults(formatted);
@@ -26,7 +28,7 @@ export default function VotePage() {
   }
 
   async function handleVote(choice) {
-    const res = await fetch("/api/vote", {
+    const res = await fetch(API_URL + "/api/vote", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ choice }),
