@@ -142,7 +142,7 @@ export default function VotePage() {
       <footer className="mt-8 text-center py-6 bg-gray-900 rounded-lg space-y-2">
         {quotes.map((quote, index) => (
           <p key={index} className="text-gray-400 italic">
-            "{quote}"
+            {quote}
           </p>
         ))}
         <p className="text-sm text-gray-500">Powered by Zen G ⚡</p>
