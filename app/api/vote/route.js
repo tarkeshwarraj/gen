@@ -6,14 +6,13 @@ export async function POST(req) {
     const body = await req.json();
     const { choice } = body;
 
-    const ip =
-      req.headers.get("x-forwarded-for")?.split(",")[0] ||
-      req.ip ||
-      "unknown";
-
     if (!choice) {
       return NextResponse.json({ error: "Missing choice" }, { status: 400 });
     }
+
+    // Get user IP properly (works on Vercel & localhost)
+    const forwarded = req.headers.get("x-forwarded-for");
+    const userIp = forwarded ? forwarded.split(",")[0] : "unknown";
 
     const client = await clientPromise;
     const db = client.db("votingDB");
@@ -21,10 +20,10 @@ export async function POST(req) {
 
     // Update existing vote or insert new one
     await votes.updateOne(
-      { ip_address: ip },
+      { ip_address: userIp },
       {
         $set: {
-          ip_address: ip,
+          ip_address: userIp,
           choice,
           updatedAt: new Date(),
         },
@@ -35,7 +34,7 @@ export async function POST(req) {
 
     return NextResponse.json({ success: true, choice });
   } catch (err) {
-    console.error(err);
+    console.error("Vote API error:", err);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }

@@ -7,18 +7,22 @@ export async function GET() {
     const db = client.db("votingDB");
     const votes = db.collection("votes");
 
-    const results = await votes
-      .aggregate([{ $group: { _id: "$choice", count: { $sum: 1 } } }])
-      .toArray();
+    // Aggregate vote counts per candidate
+    const pipeline = [
+      { $group: { _id: "$choice", count: { $sum: 1 } } }
+    ];
 
-    const formatted = results.reduce((acc, item) => {
-      acc[item._id] = item.count;
+    const results = await votes.aggregate(pipeline).toArray();
+
+    // Convert array into object { candidateId: voteCount }
+    const formatted = results.reduce((acc, curr) => {
+      acc[curr._id] = curr.count;
       return acc;
     }, {});
 
     return NextResponse.json({ results: formatted });
   } catch (err) {
-    console.error(err);
+    console.error("Results API error:", err);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
