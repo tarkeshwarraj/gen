@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function VotePage() {
   const [candidates, setCandidates] = useState([]);
@@ -103,7 +104,7 @@ export default function VotePage() {
                 isYourVote ? "border-4 border-blue-500" : ""
               }`}
             >
-              <img
+              <Image
                 src={person.img}
                 alt={person.name}
                 className="w-32 h-32 object-cover rounded-full border mb-4"
