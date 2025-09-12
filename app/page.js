@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
 import Image from "next/image";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -37,6 +38,15 @@ export default function VotePage() {
     const data = await res.json();
     if (res.ok) {
       setStatus(`🎉 You voted for: ${data.choice} 🗳️`);
+      toast.success(`🎉 You voted for: ${data.choice} 🗳️`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
       setYourVote(data.choice);
       await fetchResults();
     } else {
@@ -56,6 +66,9 @@ export default function VotePage() {
 
   return (
     <div className="p-6 min-h-screen bg-black text-white flex flex-col justify-between">
+    {/* Toast Container */}
+    <ToastContainer />
+
       {/* Top Right Total Votes */}
       <div className="flex justify-between mb-6">
         <div>
@@ -93,16 +106,9 @@ export default function VotePage() {
       {/* Top Bar */}
       <div className="flex justify-between items-center mb-6 px-4">
         <p className="text-md align-middle font-semibold text-blue-400">
-          {yourVote ? `Your vote is now for: ${yourVote} ⭐` : "Make your choice!"}
+          Make your choice!
         </p>
       </div>
-
-      {/* Status Message */}
-      {status && (
-        <div className="mb-4 p-2 bg-blue-800 text-blue-200 rounded text-center">
-          {status}
-        </div>
-      )}
 
       {/* Grid Layout */}
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
