@@ -104,7 +104,7 @@ export default function VotePage() {
       </div>
 
       {/* Top Bar */}
-      <div className="flex justify-between items-center mb-6 px-4">
+      <div className="flex justify-center items-center mb-6 px-4">
         <p className="text-md align-middle font-semibold text-blue-400">
           Make your choice!
         </p>
