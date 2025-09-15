@@ -65,7 +65,7 @@ export default function VotePage() {
   ];
 
   return (
-    <div className="p-6 min-h-screen bg-black text-white flex flex-col justify-between">
+    <div className="p-6 min-h-screen text-white flex flex-col justify-between bg-background ">
     {/* Toast Container */}
     <ToastContainer />
 
