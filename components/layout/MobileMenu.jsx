@@ -14,7 +14,27 @@ const MobileMenu = ({ mobileOpen, toggleMenu }) => {
     ]; 
 
   return (
-    <div>MobileMenu</div>
+    <div className='md:hidden bg-background border-t'>
+        <nav className='flex flex-col items-start gap-4 p-4'>
+            {menuItems.map((item) => (
+                <Link 
+                    key={item.name}
+                    href={item.href}
+                    className='text-sm font-medium text-slate-600 hover:text-[var(--primary-color)]'
+                    onClick={toggleMenu}
+                >
+                    {item.name}
+                </Link>
+            ))}
+
+            {/* Login Button */}
+            <Button variant="outline" className='w-full'>
+                <Link href="/login" className='w-full text-center'>
+                    Log In
+                </Link>
+            </Button>
+        </nav>
+    </div>
   )
 }
 

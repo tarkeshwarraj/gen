@@ -70,8 +70,9 @@ const Header = () => {
             </nav>
           </div>
 
+          {}
           {/* Actions */}
-          <div className="flex items-center gap-4">
+          <div className="items-center gap-4 hidden md:flex">
             <ThemeToggle />
             <Button variant="outline">
               <Link href="/login">
@@ -81,8 +82,14 @@ const Header = () => {
           </div>
 
           {/* Mobile Hamburger */}
-          <div className="md:hidden">
-            <button onClick={toggleMenu} className="p-2 rounded-md focus:outline-none">
+          <div className="flex items-center gap-4 md:hidden">
+            <ThemeToggle />
+            <Button variant="outline">
+              <Link href="/login">
+                <span className="truncate">Log In</span>
+              </Link>
+            </Button>
+            <button onClick={toggleMenu} className="gap-4 rounded-md focus:outline-none">
               {mobileOpen ? <X className="h-6 w-6 text-foreground" /> : <Menu className="h-6 w-6 text-foreground"/>}
             </button>
           </div>
